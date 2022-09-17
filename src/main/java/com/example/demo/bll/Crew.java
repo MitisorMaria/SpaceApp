@@ -13,14 +13,18 @@ public class Crew {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@OneToOne(mappedBy = "crew")
+    @Column(name = "id")
     private Long id;
-    //@OneToOne(cascade = CascadeType.ALL)
-    //@JoinColumn(name = "captain_id", referencedColumnName = "id")
-    @Column(name = "captain")
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "captain", referencedColumnName = "id")
     private Captain captain;
+
     @OneToMany(mappedBy = "crew", cascade = CascadeType.ALL)
     private List<Robot> robots;
+
+    @OneToOne(mappedBy = "crew")
+    private Planet planet;
 
     public Crew() {
 
@@ -54,7 +58,4 @@ public class Crew {
         return robots;
     }
 
-    public void setRobots(ArrayList<Robot> robots) {
-        this.robots = robots;
-    }
 }

@@ -18,28 +18,31 @@ enum STATUS {
 public class Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
     @Column(name = "name")
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "crew", referencedColumnName = "id")
-    //@Column(name = "crew")
     private Crew crew;
+
     @Column(name = "status")
     private STATUS status;
-    @Column(name = "image")
-    private MultipartFile image;
+
+   // @Column(name = "image")
+    //private MultipartFile image;
 
     public Planet() {
 
     }
-    public Planet(Long id, String name, Crew crew, STATUS status, MultipartFile image) {
+    public Planet(Long id, String name, Crew crew, STATUS status){//, MultipartFile image) {
         this.id = id;
         this.name = name;
         this.crew = crew;
         this.status = status;
-        this.image = image;
+       // this.image = image;
     }
 
     public Long getId() {
@@ -74,13 +77,13 @@ public class Planet {
         this.status = status;
     }
 
-    public MultipartFile getImage() {
+    /*public MultipartFile getImage() {
         return image;
     }
 
     public void setImage(MultipartFile image) {
         this.image = image;
-    }
+    }*/
 
 
 

@@ -10,10 +10,14 @@ import javax.persistence.*;
 public class Captain {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@OneToOne (mappedBy = "captain_id")
+    @Column(name = "id")
     private long id;
+
     @Column (name = "name")
     private String name;
+
+    @OneToOne(mappedBy = "captain")
+    private Crew crew;
 
     public Captain() {
 

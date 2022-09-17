@@ -11,13 +11,14 @@ public class Robot {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id")
     private Long id;
+
     @Column (name = "name")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "crew")
-    //@Column(name = "crew")
     private Crew crew;
 
     public Robot() {
