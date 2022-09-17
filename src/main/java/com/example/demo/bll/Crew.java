@@ -1,5 +1,6 @@
 package com.example.demo.bll;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -21,6 +22,7 @@ public class Crew {
     private Captain captain;
 
     @OneToMany(mappedBy = "crew", cascade = CascadeType.ALL)
+    @JsonManagedReference
     private List<Robot> robots;
 
     @OneToOne(mappedBy = "crew")

@@ -5,12 +5,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 
-enum STATUS {
-    OK,
-    NOT_OK,
-    TODO,
-    EN_ROUTE
-}
+
 
 @Component
 @Entity
