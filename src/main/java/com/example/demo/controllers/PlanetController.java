@@ -54,6 +54,12 @@ public class PlanetController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    @DeleteMapping("planet/{id}")
+    public ResponseEntity<?> deletePlanet(@PathVariable("id") Long id) {
+        planetService.deletePlanetById(id);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+
     @PutMapping("crew-to-planet")
     public ResponseEntity<?> assignCrewToPlanet(@RequestParam("id") Long id, @RequestParam("crew-id") Long crewId) {
         Planet planetFromDB = planetService.findById(id);

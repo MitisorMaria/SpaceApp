@@ -1,5 +1,6 @@
 package com.example.demo.bll;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
@@ -20,7 +21,7 @@ public class Captain {
     private String name;
 
     @OneToOne(mappedBy = "captain")
-    @JsonIgnore
+    @JsonBackReference
     private Crew crew;
 
     public Captain() {

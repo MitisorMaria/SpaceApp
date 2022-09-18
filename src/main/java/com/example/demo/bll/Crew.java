@@ -1,5 +1,6 @@
 package com.example.demo.bll;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
@@ -22,15 +23,15 @@ public class Crew {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "captain", referencedColumnName = "id")
+    @JsonManagedReference
     private Captain captain;
 
     @OneToMany(mappedBy = "crew", cascade = CascadeType.ALL)
     @JsonManagedReference
-    @JsonIgnore
     private List<Robot> robots;
 
     @OneToOne(mappedBy = "crew")
-    @JsonIgnore
+    @JsonBackReference
     private Planet planet;
 
     public Crew() {

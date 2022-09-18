@@ -1,6 +1,9 @@
 package com.example.demo.bll;
 
+import com.fasterxml.jackson.annotation.JsonAutoDetect;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -12,6 +15,7 @@ import java.sql.Blob;
 @Component
 @Entity
 @Table(name="planets")
+@JsonSerialize
 public class Planet {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -24,13 +28,13 @@ public class Planet {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "crew", referencedColumnName = "id")
+    @JsonManagedReference
     private Crew crew;
 
     @Column(name = "status")
     private STATUS status;
 
     @Column(name = "img")
-    @JsonIgnore
     private Blob image;
 
     public Planet() {

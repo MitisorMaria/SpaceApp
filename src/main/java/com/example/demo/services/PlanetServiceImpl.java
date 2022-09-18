@@ -34,5 +34,9 @@ public class PlanetServiceImpl implements PlanetService{
         return planetRepository.findById(id).get();
     }
 
+    @Override
+    public void deletePlanetById(Long id) {
+        planetRepository.deleteById(id);
+    }
 
 }

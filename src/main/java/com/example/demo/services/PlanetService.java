@@ -9,4 +9,5 @@ public interface PlanetService {
     public List<Planet> findAllPlanets();
     public void updatePlanet(Planet planet);
     public Planet findById(Long id);
+    public void deletePlanetById(Long id);
 }
