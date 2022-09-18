@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
-
+import java.sql.Blob;
 
 
 @Component
@@ -22,24 +22,24 @@ public class Planet {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "crew", referencedColumnName = "id")
-    @JsonIgnore
     private Crew crew;
 
     @Column(name = "status")
     private STATUS status;
 
-   // @Column(name = "image")
-    //private MultipartFile image;
+    @Column(name = "img")
+    @JsonIgnore
+    private Blob image;
 
     public Planet() {
 
     }
-    public Planet(Long id, String name, Crew crew, STATUS status){//, MultipartFile image) {
+    public Planet(Long id, String name, Crew crew, STATUS status, Blob image){
         this.id = id;
         this.name = name;
         this.crew = crew;
         this.status = status;
-       // this.image = image;
+        this.image = image;
     }
 
     public Long getId() {
@@ -74,15 +74,12 @@ public class Planet {
         this.status = status;
     }
 
-    /*public MultipartFile getImage() {
+    public Blob getImage() {
         return image;
     }
 
-    public void setImage(MultipartFile image) {
+    public void setImage(Blob image) {
         this.image = image;
-    }*/
-
-
-
+    }
 
 }

@@ -30,6 +30,7 @@ public class Crew {
     private List<Robot> robots;
 
     @OneToOne(mappedBy = "crew")
+    @JsonIgnore
     private Planet planet;
 
     public Crew() {
