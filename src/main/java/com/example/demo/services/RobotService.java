@@ -7,7 +7,7 @@ import java.util.List;
 public interface RobotService {
     public void addRobot(Robot robot);
     public void deleteRobot(Long id);
-    public Robot getRobot(Long id);
+    public Robot findById(Long id);
     public void updateRobot(Robot robot);
     public List<Robot> findAllRobots();
 }

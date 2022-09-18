@@ -1,6 +1,7 @@
 package com.example.demo.bll;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -18,9 +19,10 @@ public class Robot {
     @Column (name = "name")
     private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "crew")
     @JsonBackReference
+    //@JsonIgnore
     private Crew crew;
 
     public Robot() {

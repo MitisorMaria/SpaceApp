@@ -1,5 +1,6 @@
 package com.example.demo.bll;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -17,6 +18,7 @@ public class Captain {
     private String name;
 
     @OneToOne(mappedBy = "captain")
+    @JsonIgnore
     private Crew crew;
 
     public Captain() {
@@ -42,5 +44,13 @@ public class Captain {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Crew getCrew() {
+        return crew;
+    }
+
+    public void setCrew(Crew crew) {
+        this.crew = crew;
     }
 }

@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.bll.Crew;
 import com.example.demo.bll.Planet;
 import com.example.demo.bll.Robot;
 import com.example.demo.repositories.PlanetRepository;
@@ -24,6 +25,12 @@ public class PlanetServiceImpl implements PlanetService{
 
     @Override
     public void updatePlanet(Planet planet){
-        planetRepository.updatePlanetById(planet.getCrew().getId(), planet.getStatus(), planet.getId());
+        Long crewId = planet.getCrew().getId();
+        planetRepository.updatePlanetById(crewId, planet.getStatus(), planet.getId());
+    }
+
+    @Override
+    public Planet findById(Long id) {
+        return planetRepository.findById(id).get();
     }
 }

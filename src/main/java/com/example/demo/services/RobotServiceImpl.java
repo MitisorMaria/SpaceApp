@@ -26,8 +26,8 @@ public class RobotServiceImpl implements RobotService{
     }
 
     @Override
-    public Robot getRobot(Long id) {
-        return robotRepository.getReferenceById(id);
+    public Robot findById(Long id) {
+        return robotRepository.findById(id).get();
     }
 
     @Override

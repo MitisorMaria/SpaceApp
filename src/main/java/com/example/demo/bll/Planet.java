@@ -1,5 +1,6 @@
 package com.example.demo.bll;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -21,6 +22,7 @@ public class Planet {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "crew", referencedColumnName = "id")
+    @JsonIgnore
     private Crew crew;
 
     @Column(name = "status")

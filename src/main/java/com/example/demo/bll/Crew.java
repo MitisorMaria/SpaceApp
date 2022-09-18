@@ -1,9 +1,11 @@
 package com.example.demo.bll;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,10 +21,12 @@ public class Crew {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "captain", referencedColumnName = "id")
+    //@JsonIgnore
     private Captain captain;
 
     @OneToMany(mappedBy = "crew", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @JsonIgnore
     private List<Robot> robots;
 
     @OneToOne(mappedBy = "crew")
