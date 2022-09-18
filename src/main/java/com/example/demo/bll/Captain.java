@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Component
 @Entity
@@ -15,6 +16,7 @@ public class Captain {
     private long id;
 
     @Column (name = "name")
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @OneToOne(mappedBy = "captain")

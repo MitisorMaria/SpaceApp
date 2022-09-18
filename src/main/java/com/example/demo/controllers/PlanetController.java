@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.imageio.ImageIO;
 import javax.sql.rowset.serial.SerialBlob;
 import javax.sql.rowset.serial.SerialException;
+import javax.validation.Valid;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -32,7 +33,7 @@ public class PlanetController {
     private CrewService crewService;
 
     @PostMapping(value="planet")
-    public ResponseEntity<?> addPlanet(@RequestBody Planet planet) {
+    public ResponseEntity<?> addPlanet(@RequestBody @Valid Planet planet) {
         planetService.addPlanet(planet);
         return new ResponseEntity<>(HttpStatus.OK);
     }

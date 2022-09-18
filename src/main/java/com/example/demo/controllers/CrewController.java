@@ -10,6 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -23,7 +24,7 @@ public class CrewController {
     private RobotService robotService;
 
     @PostMapping( value = "crew")
-    public ResponseEntity<?> addCrew(@RequestBody Crew crew) {
+    public ResponseEntity<?> addCrew(@RequestBody @Valid Crew crew) {
         crewService.addCrew(crew);
         return new ResponseEntity<>(HttpStatus.OK);
     }

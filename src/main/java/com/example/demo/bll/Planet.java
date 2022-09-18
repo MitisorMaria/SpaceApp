@@ -5,6 +5,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import java.sql.Blob;
 
 
@@ -18,6 +19,7 @@ public class Planet {
     private Long id;
 
     @Column(name = "name")
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @OneToOne(cascade = CascadeType.ALL)

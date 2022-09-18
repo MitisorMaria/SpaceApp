@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -18,7 +19,7 @@ public class CaptainController {
     private CaptainService captainService;
 
     @PostMapping("captain")
-    public ResponseEntity<?> addCaptain(@RequestBody Captain captain) {
+    public ResponseEntity<?> addCaptain(@RequestBody @Valid Captain captain) {
         captainService.addCaptain(captain);
         return new ResponseEntity<>(HttpStatus.OK);
     }
@@ -41,7 +42,7 @@ public class CaptainController {
     }
 
     @PutMapping("captain")
-    public ResponseEntity<?> updateCaptain(@RequestBody Captain captain) {
+    public ResponseEntity<?> updateCaptain(@RequestBody @Valid Captain captain) {
         Long captainId = captain.getId();
         Crew crew = captain.getCrew();
         String name = captain.getName();
@@ -52,7 +53,6 @@ public class CaptainController {
             captainFromDB.setName(name);
             captainService.addCaptain(captainFromDB);
         }
-        //captainService.updateCaptain(captain);
         return new ResponseEntity<>(HttpStatus.OK);
     }
 }

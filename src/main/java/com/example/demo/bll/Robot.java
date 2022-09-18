@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Component
 @Entity
@@ -17,12 +18,12 @@ public class Robot {
     private Long id;
 
     @Column (name = "name")
+    @NotBlank(message = "Name is mandatory")
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "crew")
     @JsonBackReference
-    //@JsonIgnore
     private Crew crew;
 
     public Robot() {
